@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Steam Price Converter KZT to RUB",
+  "icons": {
+    "16": "extension_icon16.png",
+    "32": "extension_icon32.png",
+    "48": "extension_icon48.png",
+    "128": "extension_icon64.png"
+  },
+  "version": "1.0",
+  "description": "Конвертер цен Steam из тенге в рубли",
+  "permissions": [
+    "storage",
+    "alarms"
+  ],
+  "host_permissions": [
+    "https://www.cbr-xml-daily.ru/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [{
+    "matches": [
+      "*://store.steampowered.com/*",
+      "*://steamcommunity.com/*"
+    ],
+    "js": ["content.js"],
+    "run_at": "document_end"
+  }]
+}
